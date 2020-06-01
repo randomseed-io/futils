@@ -26,7 +26,7 @@ Currently provided macros and functions are:
 
 "Add dependencies to `project.clj`:
 
-`[pl.randomseed/futils `\"`{{PROJECT.version}}`\"`]`
+`[io.randomseed/futils `\"`{{PROJECT.version}}`\"`]`
 
 Then (depending on which functions should be used) require it in your program:
 

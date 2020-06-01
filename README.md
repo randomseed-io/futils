@@ -8,11 +8,11 @@ arguments and transforming positional-based arities into named ones.
 
 ## Installation
 
-The current release is 1.2.2. To use futils in your project, add the following
+The current release is 1.2.3. To use futils in your project, add the following
 to the `dependencies` section of `project.clj`:
 
 ```
-[pl.randomseed/futils "1.2.2"]
+[io.randomseed/futils "1.2.3"]
 ```
 
 ## Components
@@ -36,7 +36,7 @@ Currently prvided macros and functions are:
 
 Full documentation with usage examples is available on:
 
-* https://randomseed.pl/software/futils/
+* https://randomseed.io/software/futils/
 
 ## Sneak peeks
 
@@ -110,7 +110,7 @@ Examples can be found in the documentation or in test files located under
 
 ## License
 
-Copyright © 2015-2016 Paweł Wilk
+Copyright © 2015-2020 Paweł Wilk
 
 Futils is copyrighted software owned by Paweł Wilk (pw@gnu.org). You may
 redistribute and/or modify this software as long as you comply with the terms of
@@ -128,12 +128,12 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [NEWS.md]:    https://github.com/siefca/futils/blob/master/NEWS.md
 [LICENSE]:    https://github.com/siefca/futils/blob/master/LICENSE
-[argc]:       https://randomseed.pl/software/futils/#argc
-[relax]:      https://randomseed.pl/software/futils/#relax
-[relax*]:     https://randomseed.pl/software/futils/#relax*
-[nameize]:    https://randomseed.pl/software/futils/#nameize
-[nameize*]:   https://randomseed.pl/software/futils/#nameize*
-[frepeat]:    https://randomseed.pl/software/futils/#frepeat
-[apply]:      https://randomseed.pl/software/futils/#apply
-[comp]:       https://randomseed.pl/software/futils/#comp
-[identity]:   https://randomseed.pl/software/futils/#identity
+[argc]:       https://randomseed.io/software/futils/#argc
+[relax]:      https://randomseed.io/software/futils/#relax
+[relax*]:     https://randomseed.io/software/futils/#relax*
+[nameize]:    https://randomseed.io/software/futils/#nameize
+[nameize*]:   https://randomseed.io/software/futils/#nameize*
+[frepeat]:    https://randomseed.io/software/futils/#frepeat
+[apply]:      https://randomseed.io/software/futils/#apply
+[comp]:       https://randomseed.io/software/futils/#comp
+[identity]:   https://randomseed.io/software/futils/#identity
