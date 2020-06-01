@@ -1,0 +1,74 @@
+{
+ :paths ["src" "resources"]
+
+ :deps {}
+
+ :aliases {
+           :dev {
+                 :extra-deps {parkside-securities/hydrox           {:mvn/version "0.10.4"}
+                              org.clojure/core.match               {:mvn/version  "0.2.2"}
+                              org.clojure/tools.namespace          {:mvn/version "0.2.11"}
+                              org.clojure/test.check               {:mvn/version "0.10.0-alpha4"}
+                              midje/midje                          {:mvn/version "1.9.9"}
+                              io.aviso/pretty                      {:mvn/version "0.1.34"}
+                              ns-tracker                           {:mvn/version "0.4.0"}
+                              spyscope                             {:mvn/version "0.1.6"}
+                              fipp                                 {:mvn/version "0.6.12"}
+                              cljfmt                               {:mvn/version "0.6.4"}}
+                 :extra-paths ["dev/src" "test"]
+                 :jvm-opts ["-Xmx1g"
+                            "-Dclojure.spec.compile-asserts=true"]}
+
+           :test {
+                  :extra-paths ["test"]
+                  :extra-deps {org.clojure/test.check               {:mvn/version "0.10.0-alpha4"}
+                               midje/midje                          {:mvn/version "1.9.9"}}
+                  :main-opts ["-m" ""]
+                  :jvm-opts  ["-Xmx512m"]}
+
+           :docs {
+                  :extra-paths ["aliases/hydrox" "docs/resources" "docs"]
+                  :extra-deps {parkside-securities/hydrox           {:mvn/version "0.10.4"}
+                               org.clojure/core.match               {:mvn/version  "0.2.2"}}
+                  :main-opts ["-m" "futils.hydrox.main"]}
+
+           :dev-nrepl {
+                       :jvm-opts ["-Dnrepl.load=true"]
+                       :extra-paths ["aliases/nrepl"]
+                       :extra-deps {cider/cider-nrepl               {:mvn/version "0.24.0"}
+                                    ;;refactor-nrepl                {:mvn/version "2.3.1"}
+                                    cider/piggieback                {:mvn/version "0.4.1"}
+                                    nrepl/nrepl                     {:mvn/version "0.7.0-alpha3"}
+                                    acyclic/squiggly-clojure        {:mvn/version "0.1.9-SNAPSHOT"}}}
+
+           :dev-rebel {
+                       :extra-paths ["aliases/rebel"]
+                       :extra-deps {com.bhauman/rebel-readline      {:mvn/version "0.1.4"}
+                                    com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}
+                                    io.aviso/pretty                 {:mvn/version "0.1.37"}}
+                       :main-opts ["-m" "futils.rebel.main"]}
+
+           :pack {
+                  :extra-deps {pack/pack.alpha {:git/url "https://github.com/juxt/pack.alpha.git"
+                                                :sha "c70740ffc10805f34836da2160fa1899601fac02"}}}}
+
+ :documentation {:site "futils"
+                 :description "Function Utilities Library"
+                 :owners [{:name    "Paweł Wilk"
+                           :email   "pw@gnu.org"
+                           :website "https://randomseed.io/software/futils/"}]
+                 :output "docs"
+                 :paths ["src-doc"]
+                 :template {:path "template"
+                            :copy ["assets"]
+                            :defaults {:template     "article.html"
+                                       :navbar       [:file "partials/navbar.html"]
+                                       :dependencies [:file "partials/deps-web.html"]
+                                       :navigation   :navigation
+                                       :article      :article}}
+                 :files {"index"
+                         {:input     "src-doc/futils/overview.clj"
+                          :title     "futils"
+                          :subtitle  "Function Utilities Library"}}
+                 :link {:auto-tag    true
+                        :auto-number true}}}
