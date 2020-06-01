@@ -6,6 +6,6 @@
    [clojure.tools.namespace.repl :refer [refresh
                                          refresh-all]]))
 
-(defn -main []
+(defn -main [& more]
   (load-facts :print-facts))
 

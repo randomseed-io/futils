@@ -17,7 +17,6 @@
 .cpcache/
 gh-pages
 node_modules/
-pom.xml
 pom.xml.asc
 *.jar
 *.class

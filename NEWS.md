@@ -1,5 +1,16 @@
 # History of futils releases
 
+## 1.2.3 (2020-06-01)
+
+- Dropped support for Leiningen in favor of deps.edn
+- Dropped support for `environ` (handled by aliases)
+- Switched from `helpshift/hydrox` to the maintained `parkside-securities/hydrox`
+- Switched from Travis to CircleCI
+- Moved documentation to the domain `randomseed.io`
+- Renamed group artifact ID to `randomseed.io`
+- Fixed type hints for primitive types
+- Fixed metadata of macros
+
 ## 1.2.2 (2016-05-30)
 
 - Fixed metadata hash maps positions of defs in a few places.
