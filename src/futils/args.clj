@@ -5,6 +5,8 @@
 
     futils.args
 
+  (:refer-clojure :exclude [any?])
+
   (:require [futils.core  :refer :all]
             [futils.utils :refer :all]))
 
