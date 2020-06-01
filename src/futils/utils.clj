@@ -5,6 +5,7 @@
 
     futils.utils
 
+  (:refer-clojure :exclude [any?])
   (:require [futils.core :refer :all]))
 
 (futils.core/init)
@@ -32,12 +33,12 @@
   "Counts elements of a collection which is the first element of a given
   collection."
   {:added "0.7"
-   :tag long}
-  ^long [^clojure.lang.ISeq coll]
+   :tag 'long}
+  [^clojure.lang.ISeq coll]
   (count (first coll)))
 
 (defmacro
-  ^{:added "0.6"}
+  {:added "0.6"}
   if->
   [val pred & body]
   (let [v `~val
@@ -45,7 +46,7 @@
     (list 'if (cons (first p) (cons v (rest p))) (cons 'do body) v)))
 
 (defmacro
-  ^{:added "0.6"}
+  {:added "0.6"}
   if-not->
   [val pred & body]
   (let [v `~val
@@ -60,8 +61,8 @@
   closest value from the set, picking up the highest one in case of no exact
   match."
   {:added "0.1"
-   :tag long}
-  ^long [^clojure.lang.IPersistentSet s ^long v]
+   :tag 'long}
+  [^clojure.lang.IPersistentSet s ^long v]
   (if-let [x (first (subseq s >= v))]
     x
     (when-let [x (first (rsubseq s < v))] x)))
@@ -72,21 +73,21 @@
 (defn non-negative
   "Ensures that a given value is positive or 0. If it's negative it returns 0."
   {:added "0.1"
-   :tag long}
-  ^long [^long n]
+   :tag 'long}
+  [^long n]
   (if (neg? n) 0 n))
 
 (defn pos-
   "Like - operator but works for 2 numbers and never returns negative values. If
   value is negative, it will return 0."
   {:added "0.3"
-   :tag long}
-  ^long [^long x ^long y]
+   :tag 'long}
+  [^long x ^long y]
   (non-negative (- x y)))
 
 (defn require-fn
   {:added "0.1"
-   :tag clojure.lang.Fn}
+   :tag clojure.lang.IFn}
   [f]
   (when-let [fun (if (var? f) (deref f) f)]
     (when (and (ifn? fun) (instance? clojure.lang.Fn fun)) fun)))
@@ -111,8 +112,8 @@
 (defn method-argc
   "Returns the number of arguments Java method takes."
   {:added "0.1"
-   :tag long}
-  ^long [^java.lang.reflect.Method m]
+   :tag 'long}
+  [^java.lang.reflect.Method m]
   (alength (.getParameterTypes m)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -126,7 +127,7 @@
       [[m o] [{} options]
        [m o] (if (string? (first o)) [(assoc m :doc (first o)) (next o)] [m o])
        [m o] (if (map?    (first o)) [(conj  m (first o)) (next o)] [m o])
-       o  (if (vector? (first o)) (list o) o)
+       o     (if (vector? (first o)) (list o) o)
        [m o] (if (map?    (last  o)) [(conj  m (last o)) (butlast o)] [m o])]
     [m o]))
 
@@ -188,17 +189,17 @@
   each call."
   {:added "0.2"
    :tag clojure.lang.ISeq
-   :arglists '([^clojure.lang.Fn f]
-               [^clojure.lang.Fn f ^clojure.lang.IPersistentMap kvs]
+   :arglists '([^clojure.lang.IFn f]
+               [^clojure.lang.IFn f ^clojure.lang.IPersistentMap kvs]
                [^long n ^clojure.lang.Fn f]
                [^long n ^clojure.lang.Fn f ^clojure.lang.IPersistentMap kvs])}
-  ([^clojure.lang.Fn f]
+  ([^clojure.lang.IFn f]
    (frepeat-core 1 f nil))
   ([n-f f-m]
    (if (number? n-f)
      (frepeat (long n-f) f-m nil)
      (frepeat-core 1 n-f f-m)))
   ([^long n
-    ^clojure.lang.Fn f
+    ^clojure.lang.IFn f
     ^clojure.lang.IPersistentMap kvs]
    (take n (frepeat-core 1 f (assoc kvs :iterations n)))))

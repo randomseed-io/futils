@@ -33,7 +33,7 @@
 
 (defn- unicompare
   {:added "0.7"
-   :tag long}
+   :tag 'long}
   [x y]
   (if (= (class x) (class y))
     (compare x y)

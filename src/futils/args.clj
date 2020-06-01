@@ -26,7 +26,7 @@
 (def
   ^{:private true
     :added "0.1"
-    :tag long
+    :tag 'long
     :arglists '([^clojure.lang.ISeq coll])}
   obligatory-argc
   (comp count obligatory-args))
@@ -219,8 +219,8 @@
   is bigger than n. If there are no bigger nor exact numbers it returns the
   last number from the given sequence."
   {:added "1.0"
-   :tag long}
-  ^long [^long n, ^clojure.lang.ISeq nums]
+   :tag 'long}
+  [^long n, ^clojure.lang.ISeq nums]
   (if-let [n (some #(when (<= n %) %) nums)] n (last nums)))
 
 (defn- relax-calculate-pads
