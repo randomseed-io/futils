@@ -53,6 +53,34 @@
         p (if (sequential? pred) pred (list pred))]
     (list 'if (cons (first p) (cons v (rest p))) v (cons 'do body))))
 
+(defmacro
+  some-as->
+  "Binds name to expr, evaluates the first form in the lexical context
+  of that binding, then binds name to that result, repeating for each
+  successive form, returning the result of the last form or nil if one
+  of the forms evaluates to nil (in this case successive forms are not
+  evaluated)."
+  {:added "0.8"}
+  [expr name & forms]
+  (let [fstp (fn [stp] `(if (nil? ~name) nil ~stp))]
+    `(let [~name ~expr
+           ~@(interleave (repeat name) (map fstp forms))]
+       ~name)))
+
+(defmacro
+  pred-as->
+  "Binds name to expr, evaluates the first form in the lexical context
+  of that binding, then binds name to that result, repeating for each
+  successive form, returning the result of the last form or nil if the
+  pred called with current value of name returns false or nil (in this
+  case successive forms are not evaluated)."
+  {:added "0.8"}
+  [expr name pred & forms]
+  (let [fstp (fn [stp] `(if (~pred ~name) ~stp nil))]
+    `(let [~name ~expr
+           ~@(interleave (repeat name) (map fstp forms))]
+       ~name)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set operations.
 
