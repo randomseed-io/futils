@@ -38,16 +38,16 @@
   (count (first coll)))
 
 (defmacro
-  {:added "0.6"}
   if->
+  {:added "0.6"}
   [val pred & body]
   (let [v `~val
         p (if (sequential? pred) pred (list pred))]
     (list 'if (cons (first p) (cons v (rest p))) (cons 'do body) v)))
 
 (defmacro
-  {:added "0.6"}
   if-not->
+  {:added "0.6"}
   [val pred & body]
   (let [v `~val
         p (if (sequential? pred) pred (list pred))]
