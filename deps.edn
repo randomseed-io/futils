@@ -23,7 +23,7 @@
                   :extra-paths ["test"]
                   :extra-deps {org.clojure/test.check               {:mvn/version "0.10.0-alpha4"}
                                midje/midje                          {:mvn/version "1.9.9"}}
-                  :main-opts ["-m" ""]
+                  :main-opts ["-m" "futils.test.main"]
                   :jvm-opts  ["-Xmx512m"]}
 
            :docs {
