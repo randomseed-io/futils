@@ -1,6 +1,7 @@
 # futils – Function Utilities Library
 
-[![Build Status](https://travis-ci.org/siefca/futils.png?branch=master)](https://travis-ci.org/siefca/futils)
+[![Futils on Clojars](https://img.shields.io/clojars/v/io.randomseed/futils.svg)](https://clojars.org/io.randomseed/futils)
+[![CircleCI](https://circleci.com/gh/randomseed-io/futils.svg?style=svg)](https://circleci.com/gh/randomseed-io/futils)
 
 This library defines forms that abstract some common operations on functions,
 including counting arguments, creating wrappers, passing proper number of
@@ -8,12 +9,21 @@ arguments and transforming positional-based arities into named ones.
 
 ## Installation
 
-The current release is 1.2.3. To use futils in your project, add the following
-to the `dependencies` section of `project.clj`:
+To use futils in your project, add the following to dependencies section of
+`project.clj` or `build.boot`:
 
-```
+```clojure
 [io.randomseed/futils "1.2.3"]
 ```
+
+For `deps.edn` add the following as an element of a map under `:deps` or
+`:extra-deps` key:
+
+```clojure
+io.randomseed/futils {:mvn/version "1.2.3"}
+```
+
+You can also download JAR from [Clojars](https://clojars.org/io.randomseed/futils).
 
 ## Components
 
@@ -107,6 +117,46 @@ Full documentation with usage examples is available on:
 
 Examples can be found in the documentation or in test files located under
 `test/futils` subdirectory of the sources.
+
+## Development
+
+### Building docs
+
+```bash
+make docs
+```
+
+### Building JAR
+
+```bash
+make jar
+```
+
+### Rebuilding POM
+
+```bash
+make pom
+```
+
+### Signing POM
+
+```bash
+make sig
+```
+
+### Deploying to Clojars
+
+```bash
+make deploy
+```
+
+### Interactive development
+
+```bash
+bin/repl
+```
+
+Starts REPL and nREPL server (port number is stored in `.nrepl-port`).
 
 ## License
 
